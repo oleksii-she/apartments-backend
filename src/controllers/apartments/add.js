@@ -20,15 +20,32 @@ const add = async (req, res, next) => {
       coverImage[0].path,
       {
         public_id: "cover_image",
+        transformation: [
+          {
+            width: 480,
+            height: 480,
+            gravity: "face",
+            crop: "fill",
+          },
+        ],
       }
     );
-    console.log(user);
+
     await deleteTempFile(coverImage[0].path);
 
     const imageUrls = [];
 
     for (const image of images) {
-      const result = await cloudinary.uploader.upload(image.path);
+      const result = await cloudinary.uploader.upload(image.path, {
+        transformation: [
+          {
+            width: 480,
+            height: 480,
+            gravity: "face",
+            crop: "fill",
+          },
+        ],
+      });
       imageUrls.push(result.secure_url);
 
       deleteTempFile(image.path);
