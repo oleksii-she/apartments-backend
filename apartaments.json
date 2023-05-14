@@ -1,0 +1,72 @@
+[
+        {
+    "name": "Raffles Hotel",
+    "class": "LUX",
+    "location": "Singapore",
+    "country": "Singapore",
+    "address": "1 Beach Road",
+    "rooms": "1",
+    "price": "30$",
+    "priceL": "20$",
+    "description": "The apartment complex is located in a restored historic building overlooking the Douro River. Guests can enjoy luxurious apartments with panoramic views of the river and free Wi-Fi. Some apartments have a balcony with a river view. All apartments feature a spacious living room with a flat-screen TV and cable channels, as well as a double sofa bed. The mini-kitchen is equipped with an oven, refrigerator, and microwave, while the private bathroom provides complimentary toiletries. Guests are provided with towels and bed linen.Guests can have breakfast at various cafes and terraces along the river and at Kubo Square. A supermarket is located less than a 5-minute walk away."
+    },{
+        "name": "Burj Al Arab",
+        "class": "LUX",
+        "location": "Dubai",
+        "country": "United Arab Emirates",
+        "address": "Jumeirah Beach Road",
+        "rooms": "2",
+        "price": "500$",
+        "description": "The Burj Al Arab is a luxury hotel located in Dubai, United Arab Emirates. It is one of the most expensive hotels in the world, known for its iconic sail-shaped structure. The hotel features luxurious rooms and suites with stunning views of the Arabian Gulf, as well as a private beach, infinity pool, and multiple restaurants and bars."
+        },
+        {
+        "name": "Four Seasons Hotel George V",
+        "class": "LUX",
+        "location": "Paris",
+        "country": "France",
+        "address": "31 Avenue George V",
+        "rooms": "3",
+        "price": "1000$",
+        "description": "The Four Seasons Hotel George V is a luxury hotel located in the heart of Paris, France. It features luxurious rooms and suites, a spa, indoor pool, and multiple restaurants and bars. The hotel is known for its elegant decor and impeccable service, making it a popular choice for discerning travelers."
+        },
+        {
+        "name": "The Ritz-Carlton",
+        "class": "LUX",
+        "location": "New York City",
+        "country": "United States",
+        "address": "50 Central Park South",
+        "rooms": "2",
+        "price": "800$",
+        "description": "The Ritz-Carlton is a luxury hotel located in New York City, overlooking Central Park. The hotel features luxurious rooms and suites, a spa, fitness center, and multiple restaurants and bars. The hotel is known for its elegant decor and impeccable service, making it a popular choice for discerning travelers."
+        },
+        {
+        "name": "Marina Bay Sands",
+        "class": "LUX",
+        "location": "Singapore",
+        "country": "Singapore",
+        "address": "10 Bayfront Avenue",
+        "rooms": "3",
+        "price": "600$",
+        "description": "Marina Bay Sands is a luxury hotel located in Singapore. It features luxurious rooms and suites with stunning views of the city skyline, as well as a rooftop infinity pool, multiple restaurants and bars, a casino, and a shopping mall. The hotel is known for its iconic architecture and world-class amenities."
+        },
+        {
+        "name": "The Langham",
+        "class": "LUX",
+        "location": "London",
+        "country": "United Kingdom",
+        "address": "1C Portland Place",
+        "rooms": "4",
+        "price": "900$",
+        "description": "The Langham is a luxury hotel located in the heart of London, United Kingdom. It features luxurious rooms and suites, a spa, fitness center, and multiple restaurants and bars. The hotel is known for its elegant decor and impeccable service, making it a popular choice for discerning travelers."
+        },
+        {
+        "name": "The Peninsula",
+        "class": "LUX",
+        "location": "Hong Kong",
+        "country": "China",
+        "address": "Salisbury Road",
+        "rooms": "5",
+        "price": "1200$",
+        "description": "The Peninsula is a luxury hotel located in Hong Kong, China. It features luxurious rooms and suites with stunning views of Victoria Harbour, as well as a spa, fitness center, and multiple restaurants and bars. The hotel is known for its iconic colonial architecture and world-class amenities."
+        }
+    ]
