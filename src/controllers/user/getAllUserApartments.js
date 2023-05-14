@@ -21,7 +21,7 @@ const getAllUserApartments = async (req, res, next) => {
       .populate("owner", "name email");
 
     const result = {
-      ...apatments,
+      apartments: apartments,
       totalPosts,
     };
     res.json({
