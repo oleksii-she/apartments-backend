@@ -8,9 +8,9 @@ const {
   authentication,
   upload,
 } = require("../../middleware");
-const { user: ctrl } = require("../../controllers/");
+const { user: ctrl } = require("../../controllers");
 const { joiApartmentSchema } = require("../../models/apartment");
-
+const { userJoiSchemas } = require("../../models/user");
 router.get(
   "/:id/apartments",
   authentication,
@@ -27,13 +27,12 @@ router.post(
   ctrlWrapper(ctrl.add)
 );
 router.get("/:id", authentication, isValidId, ctrlWrapper(ctrl.getById));
-router.put(
-  "/:id",
+router.patch(
+  "/user",
   authentication,
-  isValidId,
-  validation(joiApartmentSchema),
-
-  ctrlWrapper(ctrl.updateById)
+  // isValidId,
+  // validation(userJoiSchemas),
+  ctrlWrapper(ctrl.updateUser)
 );
 router.delete("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
 // router.patch("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
