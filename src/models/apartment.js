@@ -79,6 +79,7 @@ const joiApartmentSchema = Joi.object({
   images: Joi.array().min(1).required(),
   description: Joi.string().min(15).max(400).required(),
   coverImage: Joi.string().required(),
+  rating: Joi.number().min(1).max(5).default(0),
 });
 
 const joiRatingSchema = Joi.object({
