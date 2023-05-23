@@ -49,7 +49,7 @@ const add = async (req, res, next) => {
 
       deleteTempFile(image.path);
     }
-    console.log(email);
+
     const result = await Apartment.create({
       ...req.body,
       images: imageUrls,
