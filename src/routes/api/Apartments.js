@@ -10,7 +10,7 @@ const {
 } = require("../../middleware");
 const { apartments: ctrl } = require("../../controllers/");
 const { joiApartmentSchema } = require("../../models/apartment");
-const { joiCommentSchema } = require("../../models/comment");
+const { joiCommentSchema, joiRatingSchema } = require("../../models/comment");
 
 router.get("/", ctrlWrapper(ctrl.getAll));
 // router.get("/", ctrlWrapper(ctrl.getAllFilterCountry));
@@ -62,6 +62,13 @@ router.put(
   validation(joiCommentSchema),
 
   ctrlWrapper(ctrl.updateByIdComments)
+);
+router.put(
+  "/:id/rating",
+  authentication,
+  isValidId,
+  // validation(joiRatingSchema),
+  ctrlWrapper(ctrl.updateRating)
 );
 // router.patch("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
 module.exports = router;

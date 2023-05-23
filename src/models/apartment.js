@@ -45,6 +45,12 @@ const apartmentSchema = Schema(
       type: String,
       required: true,
     },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5,
+      default: 0,
+    },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
@@ -75,9 +81,14 @@ const joiApartmentSchema = Joi.object({
   coverImage: Joi.string().required(),
 });
 
+const joiRatingSchema = Joi.object({
+  rating: Joi.number().min(1).max(5).default(0),
+});
+
 const Apartment = model("apartment", apartmentSchema);
 
 module.exports = {
   Apartment,
   joiApartmentSchema,
+  joiRatingSchema,
 };

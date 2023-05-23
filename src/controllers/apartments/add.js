@@ -19,7 +19,6 @@ const add = async (req, res, next) => {
     const coverImageResp = await cloudinary.uploader.upload(
       coverImage[0].path,
       {
-        public_id: "cover_image",
         transformation: [
           {
             width: 480,
