@@ -1,6 +1,21 @@
 const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 const { commentSchema } = require("./comment");
+
+const ratingSchema = Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+    required: true,
+  },
+});
+
 const apartmentSchema = Schema(
   {
     name: { type: String, required: true },
@@ -45,6 +60,7 @@ const apartmentSchema = Schema(
       type: String,
       required: true,
     },
+    ratings: [ratingSchema],
     rating: {
       type: Number,
       min: 0,
