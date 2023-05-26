@@ -2,9 +2,6 @@ const { Apartment } = require("../../models");
 
 const getAll = async (req, res, next) => {
   try {
-    // console.log("asas");
-    // повертаємо квартири окремого користувача
-
     const { page = 1, limit = 10, country } = req.query;
 
     const skip = (page - 1) * limit;
@@ -18,7 +15,7 @@ const getAll = async (req, res, next) => {
       apartments = await Apartment.find()
         .skip(skip)
         .limit(limit)
-        .populate("owner", "name email")
+        .populate("owner", "name email ratings")
         .sort({ createdAt: -1 });
     } else {
       totalPosts = await Apartment.countDocuments({ country: country });
