@@ -1,32 +1,24 @@
 const { User } = require("../../models");
 const { HttpError } = require("../../helpers");
 
-const updateUser = async (req, res) => {
+const updateUser = async (req, res, next) => {
   try {
     const { _id } = req.user;
-
     const { name: newName, phone: newPhone } = req.body;
-
-    const newUser = {
-      name: newName,
-      phone: newPhone,
-    };
 
     const existingUser = await User.findOne({ phone: newPhone });
     if (existingUser && existingUser._id.toString() !== _id) {
-      throw new HttpError(400, `Phone number ${newPhone} already exists.`);
+      throw HttpError(400, `Phone number ${newPhone} already exists.`);
     }
 
     const result = await User.findByIdAndUpdate(
       _id,
-      { ...newUser },
-      {
-        new: true,
-      }
+      { name: newName, phone: newPhone },
+      { new: true }
     );
 
-    if (!newUser) {
-      throw HttpError(404, `id:${id} not found`);
+    if (!result) {
+      throw HttpError(404, `User with id:${_id} not found`);
     }
 
     res.status(200).json({ data: { result } });
