@@ -22,13 +22,10 @@ const userSchema = new Schema(
     phone: {
       type: String,
       unique: true,
-      match: NumberRegex,
-      required: true,
     },
     password: {
       type: String,
       minlength: 6,
-      required: true,
     },
     token: {
       type: String,
@@ -55,6 +52,12 @@ const joiUserLoginSchema = Joi.object({
   password: Joi.string().min(6).max(25).required(),
 });
 
+const joiGoogleLoginSchema = Joi.object({
+  name: Joi.string().required("Name is required"),
+  email: Joi.string().email().required("Email is required"),
+  accessToken: Joi.string(),
+});
+
 const userJoiSchemas = { joiUserRegisterSchema, joiUserLoginSchema };
 
 const User = model("user", userSchema);
@@ -62,4 +65,5 @@ const User = model("user", userSchema);
 module.exports = {
   User,
   userJoiSchemas,
+  joiGoogleLoginSchema,
 };

@@ -11,6 +11,12 @@ const updateUser = async (req, res) => {
       name: newName,
       phone: newPhone,
     };
+
+    const existingUser = await User.findOne({ phone: newPhone });
+    if (existingUser && existingUser._id.toString() !== _id) {
+      throw new HttpError(400, `Phone number ${newPhone} already exists.`);
+    }
+
     const result = await User.findByIdAndUpdate(
       _id,
       { ...newUser },
@@ -18,7 +24,7 @@ const updateUser = async (req, res) => {
         new: true,
       }
     );
-    // // console.log(newUser);
+
     if (!newUser) {
       throw HttpError(404, `id:${id} not found`);
     }

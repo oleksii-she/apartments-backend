@@ -3,8 +3,8 @@ const { HttpError } = require("../../helpers");
 const updateById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    // const { coverImage } = req.file;
-    console.log(req.file);
+
+
     const result = await Apartment.findByIdAndUpdate(id, req.body, {
       new: true,
     });

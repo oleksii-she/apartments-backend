@@ -1,24 +1,32 @@
-const mangoose = require("mongoose");
+const mongoose = require("mongoose");
 const express = require("express");
+const session = require('express-session');
 const cors = require("cors");
 const logger = require("morgan");
+// const {isLoggedIn} = require('./src/middleware')
 require("dotenv").config();
+
 const { getAllCountries } = require("./src/controllers/other");
-
-// routers import
-
+const passport = require('passport');
+require('./src/utils/authGoogle');
 const apartmentsRouter = require("./src/routes/api/Apartments");
 const authRouter = require("./src/routes/api/auth");
 const userRouter = require("./src/routes/api/users");
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+app.set('view engine', 'ejs');
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-// routers
+//google
+
+app.use(session({ secret: process.env.SESSION_SECRET_KAY, resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use("/api/apartments", apartmentsRouter);
 app.use("/api/auth", authRouter);
@@ -36,13 +44,11 @@ app.use((err, req, res, next) => {
 
 const { DB_HOST, PORT = 4000 } = process.env;
 
-// Configuration
-
-mangoose
+mongoose
   .connect(DB_HOST)
   .then(() => {
     app.listen(PORT);
-    console.log(`...starting server port ${PORT} `);
+    console.log(`Server is running on port ${PORT}`);
   })
   .catch((error) => {
     console.log(error.message);
