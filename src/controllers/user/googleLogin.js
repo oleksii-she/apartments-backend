@@ -25,7 +25,7 @@ const googleLogin = async (req, res, next) => {
         token
       });
       // Отримання URL редіректу з параметром token
-      const redirectUrl = `http://localhost:5173/apartments-app/apartments?token=${token}`;
+      const redirectUrl = `https://oleksii-she.github.io/apartments-app/apartments-app/apartments?token=${token}`;
 
       return res.redirect(redirectUrl);
     } else {
@@ -47,7 +47,7 @@ const googleLogin = async (req, res, next) => {
       await User.findByIdAndUpdate(user.id, {
         token
       });
-      const redirectUrl = `http://localhost:5173/apartments-app/apartments?token=${token}`;
+      const redirectUrl = `https://oleksii-she.github.io/apartments-app/apartments?token=${token}`;
 
       return res.redirect(redirectUrl);
     }
