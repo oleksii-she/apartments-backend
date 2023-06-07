@@ -21,6 +21,9 @@ const googleLogin = async (req, res, next) => {
       // створюємо сам токен
       const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "23h" });
 
+  await User.findByIdAndUpdate(user.id, {
+        token
+      });
       // Отримання URL редіректу з параметром token
       const redirectUrl = `http://localhost:5173/apartments-app/apartments?token=${token}`;
 
@@ -40,6 +43,10 @@ const googleLogin = async (req, res, next) => {
 
       // створюємо сам токен
       const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "23h" });
+
+      await User.findByIdAndUpdate(user.id, {
+        token
+      });
       const redirectUrl = `http://localhost:5173/apartments-app/apartments?token=${token}`;
 
       return res.redirect(redirectUrl);
