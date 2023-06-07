@@ -22,6 +22,8 @@ const userSchema = new Schema(
     phone: {
       type: String,
       unique: true,
+      sparse: true,
+      
     },
     password: {
       type: String,
@@ -61,7 +63,7 @@ const joiGoogleLoginSchema = Joi.object({
 const userJoiSchemas = { joiUserRegisterSchema, joiUserLoginSchema };
 
 const User = model("user", userSchema);
-
+console.log(User);
 module.exports = {
   User,
   userJoiSchemas,
