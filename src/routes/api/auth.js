@@ -45,7 +45,7 @@ router.get(
 
 router.get( '/google/callback',
   passport.authenticate( 'google', {
-    successRedirect: 'http://localhost:4040/api/auth/google/protected',
+    successRedirect: 'https://apartments-backend.onrender.com/api/auth/google/protected',
     failureRedirect: '/auth/google/failure'
   })
 );
