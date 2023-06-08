@@ -20,11 +20,7 @@ const userSchema = new Schema(
       required: true,
     },
     phone: {
-      type: String,
-      unique: true,
-      sparse: true,
-      default: '+380000000000',
-      
+      type: String,    
     },
     password: {
       type: String,
