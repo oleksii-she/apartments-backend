@@ -25,7 +25,7 @@ const googleLogin = async (req, res, next) => {
         token
       });
       // Отримання URL редіректу з параметром token
-      const redirectUrl = `https://oleksii-she.github.io/apartments-app/apartments-app/apartments?token=${token}`;
+      const redirectUrl = `https://oleksii-she.github.io/apartments-app/apartments?token=${token}`;
 
       return res.redirect(redirectUrl);
     } else {

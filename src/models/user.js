@@ -23,6 +23,7 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       sparse: true,
+      default: '+380000000000',
       
     },
     password: {
