@@ -3,10 +3,25 @@ const { Reserve } = require("../../models");
 const getReserve = async(req, res,next)=>{
 try {
     const { _id: owner } = req.user;
-    const result = await Reserve.find({ owner });
+
+    if (!owner) {
+        throw HttpError(404, "user not found");
+      }
+    // const result = await Reserve.find({ owner });
+    const { page = 1, limit = 10 } = req.query;
+
+    const skip = (page - 1) * limit;
+
+    const totalPosts = await Reserve.countDocuments({ owner });
+
+    const result = await Reserve.find({ owner })
+    .skip(skip)
+    .limit(limit)
+    .populate("owner",);
+
     res.json({
         status: "success",
-        data: { result },
+        data: { result,totalPosts },
       });
 } catch (error) {
     next(error);
