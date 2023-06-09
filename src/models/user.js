@@ -62,7 +62,7 @@ const joiGoogleLoginSchema = Joi.object({
 const userJoiSchemas = { joiUserRegisterSchema, joiUserLoginSchema };
 
 const User = model("user", userSchema);
-console.log(User);
+
 module.exports = {
   User,
   userJoiSchemas,

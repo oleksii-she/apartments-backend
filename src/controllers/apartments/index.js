@@ -8,6 +8,8 @@ const getComments = require("./getComments");
 const removeCommentId = require("./removeComment");
 const updateByIdComments = require("./updateByIdComment");
 const updateRating = require("./updateRating");
+const reserve = require('./reserve')
+
 // const getAllFilterCountry = require("./getAllFilterCountry");
 
 module.exports = {
@@ -21,5 +23,7 @@ module.exports = {
   removeCommentId,
   updateByIdComments,
   updateRating,
+  reserve,
+
   // getAllFilterCountry,
 };

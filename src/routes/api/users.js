@@ -36,4 +36,9 @@ router.patch(
 );
 router.delete("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
 // router.patch("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
+router.get(
+  "/:id/reserve",
+  authentication,
+  ctrlWrapper(ctrl.getReserve)
+);
 module.exports = router;

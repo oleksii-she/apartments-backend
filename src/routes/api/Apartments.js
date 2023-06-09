@@ -11,6 +11,7 @@ const {
 const { apartments: ctrl } = require("../../controllers/");
 const { joiApartmentSchema } = require("../../models/apartment");
 const { joiCommentSchema, joiRatingSchema } = require("../../models/comment");
+const {joiReserveSchema} = require('../../models/reserve')
 
 router.get("/", ctrlWrapper(ctrl.getAll));
 // router.get("/", ctrlWrapper(ctrl.getAllFilterCountry));
@@ -69,6 +70,12 @@ router.put(
   isValidId,
   // validation(joiRatingSchema),
   ctrlWrapper(ctrl.updateRating)
+);
+router.post(
+  "/:id/reserve",
+  isValidId,
+  validation(joiReserveSchema),
+  ctrlWrapper(ctrl.reserve)
 );
 // router.patch("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
 module.exports = router;
