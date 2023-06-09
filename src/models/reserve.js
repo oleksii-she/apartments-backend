@@ -43,7 +43,7 @@ const joiReserveSchema = Joi.object({
   name: Joi.string().min(3).max(25).required("Name is required"),
   phone: Joi.string().min(3).max(25).pattern(NumberRegex).required("Phone is required"),
   email: Joi.string().pattern(emailRegex).required("Email is required"),
-  description: Joi.string().min(15).max(400),
+  description: Joi.string().min(5).max(400),
 });
 
 const Reserve = model('reserve',ReserveSchema )
