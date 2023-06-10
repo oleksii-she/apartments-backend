@@ -28,6 +28,11 @@ const ReserveSchema = Schema({
       ref: "apartment",
       required: true,
     },
+    apartmentName:{
+      type: Schema.Types.ObjectId,
+      ref: "apartment",
+      required: true,
+    },
         owner: {
       type: Schema.Types.ObjectId,
       ref: "user",

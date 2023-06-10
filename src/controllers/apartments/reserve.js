@@ -2,9 +2,7 @@ const { Reserve, Apartment } = require("../../models");
 const { HttpError } = require("../../helpers");
 const reserve= async(req,res,next)=>{
   try {
-   
     const { id: apartmentId } = req.params;
-    // console.log(apartmentId);
     const {owner, _id, name} = await Apartment.findById({ _id: apartmentId })
 
 if (!owner) {
