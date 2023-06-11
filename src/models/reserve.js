@@ -29,7 +29,7 @@ const ReserveSchema = Schema({
       required: true,
     },
     apartmentName:{
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.String,
       ref: "apartment",
       required: true,
     },

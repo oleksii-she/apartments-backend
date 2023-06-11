@@ -11,7 +11,7 @@ if (!owner) {
 await Reserve.create({
 ...req.body, 
 apartmentId:_id,
-apartmentName:name,
+apartmentName: name,
 owner
 })
 
