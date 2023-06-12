@@ -9,9 +9,9 @@ const {
   upload,
 } = require("../../middleware");
 const { apartments: ctrl } = require("../../controllers/");
-const { joiApartmentSchema } = require("../../models/apartment");
-const { joiCommentSchema, joiRatingSchema } = require("../../models/comment");
-const {joiReserveSchema} = require('../../models/reserve')
+const { joiApartmentSchema,joiReservedSchema } = require("../../models/apartment");
+const { joiCommentSchema } = require("../../models/comment");
+
 
 router.get("/", ctrlWrapper(ctrl.getAll));
 // router.get("/", ctrlWrapper(ctrl.getAllFilterCountry));
@@ -70,6 +70,13 @@ router.put(
   isValidId,
   // validation(joiRatingSchema),
   ctrlWrapper(ctrl.updateRating)
+);
+router.patch(
+  "/:id/reserved",
+  authentication,
+  isValidId,
+  validation(joiReservedSchema),
+  ctrlWrapper(ctrl.reservedToggle)
 );
 
 

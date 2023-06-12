@@ -22,7 +22,9 @@ if(String(result.owner) !== String(owner)){
   throw HttpError(403, "No rights to view");
 }
 
-const update = await Reserve.findByIdAndUpdate(result._id,{ read: true })
+const update = await Reserve.findByIdAndUpdate(result._id,{ read: true } , {
+  new: true,
+})
 
 // console.log(result);
     res.json({

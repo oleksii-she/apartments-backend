@@ -60,6 +60,10 @@ const apartmentSchema = Schema(
       type: String,
       required: true,
     },
+    reserved: {
+      type: Boolean,
+      default: false,
+    },
     ratings: [ratingSchema],
     rating: {
       type: Number,
@@ -96,10 +100,15 @@ const joiApartmentSchema = Joi.object({
   description: Joi.string().min(15).max(400).required(),
   coverImage: Joi.string().required(),
   rating: Joi.number().min(0).max(5).default(0),
+  reserved: Joi.boolean().default(false)
 });
 
 const joiRatingSchema = Joi.object({
   rating: Joi.number().min(0).max(5).default(0),
+});
+
+const joiReservedSchema = Joi.object({
+  reserved: Joi.boolean().default(false).required()
 });
 
 const Apartment = model("apartment", apartmentSchema);
@@ -108,4 +117,5 @@ module.exports = {
   Apartment,
   joiApartmentSchema,
   joiRatingSchema,
+  joiReservedSchema
 };

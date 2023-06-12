@@ -8,7 +8,7 @@ const getComments = require("./getComments");
 const removeCommentId = require("./removeComment");
 const updateByIdComments = require("./updateByIdComment");
 const updateRating = require("./updateRating");
-const addReserve = require('../reserves/addReserve')
+const reservedToggle = require('./reservedToggle')
 
 
 // const getAllFilterCountry = require("./getAllFilterCountry");
@@ -24,7 +24,8 @@ module.exports = {
   removeCommentId,
   updateByIdComments,
   updateRating,
-  addReserve,
+  reservedToggle
+
 
   // getAllFilterCountry,
 };
