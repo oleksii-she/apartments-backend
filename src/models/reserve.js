@@ -33,6 +33,10 @@ const ReserveSchema = Schema({
       ref: "apartment",
       required: true,
     },
+    read:{
+type:Boolean,
+default:false
+    },
         owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
@@ -48,12 +52,17 @@ const joiReserveSchema = Joi.object({
   name: Joi.string().min(3).max(25).required("Name is required"),
   phone: Joi.string().min(3).max(25).pattern(NumberRegex).required("Phone is required"),
   email: Joi.string().pattern(emailRegex).required("Email is required"),
+  read: Joi.boolean(),
   description: Joi.string().min(5).max(400),
 });
 
+const joiReserveReadSchema = Joi.object({
+  read: Joi.boolean(),
+});
 const Reserve = model('reserve',ReserveSchema )
 
 module.exports = {
   Reserve,
   joiReserveSchema,
+  joiReserveReadSchema
 };

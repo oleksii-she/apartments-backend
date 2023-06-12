@@ -1,6 +1,6 @@
 const { Apartment } = require("../../models");
 const { HttpError } = require("../../helpers");
-const removeById = async (req, res, next) => {
+const apartmentRemoveById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Apartment.findByIdAndRemove(id);
@@ -16,4 +16,4 @@ const removeById = async (req, res, next) => {
   }
 };
 
-module.exports = removeById;
+module.exports = apartmentRemoveById;

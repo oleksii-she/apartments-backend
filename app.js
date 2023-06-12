@@ -10,6 +10,7 @@ const { getAllCountries } = require("./src/controllers/other");
 const passport = require('passport');
 require('./src/utils/authGoogle');
 const apartmentsRouter = require("./src/routes/api/Apartments");
+const reservesRouter = require("./src/routes/api/Reserves");
 const authRouter = require("./src/routes/api/auth");
 const userRouter = require("./src/routes/api/users");
 const app = express();
@@ -29,6 +30,7 @@ app.use(passport.session());
 
 
 app.use("/api/apartments", apartmentsRouter);
+app.use("/api/reserves", reservesRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/countries", getAllCountries);

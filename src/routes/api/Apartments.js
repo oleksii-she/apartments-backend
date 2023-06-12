@@ -34,7 +34,7 @@ router.put(
 
   ctrlWrapper(ctrl.updateById)
 );
-router.delete("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
+router.delete("/:id", authentication, isValidId, ctrlWrapper(ctrl.apartmentRemoveById));
 
 router.post(
   "/:id/comments",
@@ -71,11 +71,6 @@ router.put(
   // validation(joiRatingSchema),
   ctrlWrapper(ctrl.updateRating)
 );
-router.post(
-  "/:id/reserve",
-  isValidId,
-  validation(joiReserveSchema),
-  ctrlWrapper(ctrl.reserve)
-);
-// router.patch("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
+
+
 module.exports = router;

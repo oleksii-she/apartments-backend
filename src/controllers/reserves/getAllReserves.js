@@ -1,13 +1,14 @@
 
 const { Reserve } = require("../../models");
-const getReserve = async(req, res,next)=>{
+
+const getAllReserves = async(req, res,next)=>{
 try {
     const { _id: owner } = req.user;
 
     if (!owner) {
         throw HttpError(404, "user not found");
       }
-    // const result = await Reserve.find({ owner });
+      
     const { page = 1, limit = 10 } = req.query;
 
     const skip = (page - 1) * limit;
@@ -28,4 +29,4 @@ try {
 }
 }
 
-module.exports = getReserve;
+module.exports = getAllReserves;

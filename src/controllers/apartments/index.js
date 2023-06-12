@@ -2,13 +2,14 @@ const getAll = require("./getAll");
 const add = require("./add");
 const getById = require("./getById");
 const updateById = require("./updateById");
-const removeById = require("./removeById");
+const apartmentRemoveById = require("./apartmentRemoveById");
 const addComment = require("./addComment");
 const getComments = require("./getComments");
 const removeCommentId = require("./removeComment");
 const updateByIdComments = require("./updateByIdComment");
 const updateRating = require("./updateRating");
-const reserve = require('./reserve')
+const addReserve = require('../reserves/addReserve')
+
 
 // const getAllFilterCountry = require("./getAllFilterCountry");
 
@@ -17,13 +18,13 @@ module.exports = {
   add,
   getById,
   updateById,
-  removeById,
+  apartmentRemoveById,
   addComment,
   getComments,
   removeCommentId,
   updateByIdComments,
   updateRating,
-  reserve,
+  addReserve,
 
   // getAllFilterCountry,
 };

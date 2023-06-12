@@ -30,15 +30,9 @@ router.get("/:id", authentication, isValidId, ctrlWrapper(ctrl.getById));
 router.patch(
   "/user",
   authentication,
-  // isValidId,
-  // validation(userJoiSchemas),
   ctrlWrapper(ctrl.updateUser)
 );
-router.delete("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
-// router.patch("/:id", authentication, isValidId, ctrlWrapper(ctrl.removeById));
-router.get(
-  "/:id/reserve",
-  authentication,
-  ctrlWrapper(ctrl.getReserve)
-);
+
+
+
 module.exports = router;

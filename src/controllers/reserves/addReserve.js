@@ -1,6 +1,8 @@
 const { Reserve, Apartment } = require("../../models");
 const { HttpError } = require("../../helpers");
-const reserve= async(req,res,next)=>{
+
+
+const addReserve= async(req,res,next)=>{
   try {
     const { id: apartmentId } = req.params;
     const {owner, _id, name} = await Apartment.findById({ _id: apartmentId })
@@ -24,4 +26,4 @@ res.status(201).json({
   }
 }
 
-module.exports = reserve
+module.exports = addReserve

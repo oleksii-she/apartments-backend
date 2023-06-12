@@ -5,7 +5,7 @@ const logout = require("./logout");
 const getAllUserApartments = require("./getAllUserApartments");
 const updateUser = require("./updeteUser");
 const googleLogin = require("./googleLogin");
-const getReserve = require('./getReserve')
+const getReserve = require('../reserves/getAllReserves')
 module.exports = {
   registration,
   login,
