@@ -33,6 +33,11 @@ const ReserveSchema = Schema({
       ref: "apartment",
       required: true,
     },
+    coverImage:{
+      type: Schema.Types.String,
+      ref: "apartment",
+      required: true,
+    },
     read:{
 type:Boolean,
 default:false
