@@ -8,12 +8,15 @@ const reservedToggle = async (req, res, next) => {
       new: true,
     });
 
-    await Reserve.updateMany({ apartmentId: id }, { reserved: reserved });
+    const reserved = await Reserve.updateMany(
+      { apartmentId: id },
+      { reserved: reserved }
+    );
 
     if (!result) {
       throw HttpError(404, `id:${id} not found`);
     }
-    res.status(200).json({ data: { result } });
+    res.status(200).json({ data: { result, reserved } });
   } catch (error) {
     console.error(error);
     next(error);
