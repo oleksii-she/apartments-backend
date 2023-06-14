@@ -3,14 +3,12 @@ const { HttpError } = require("../../helpers");
 const reservedToggle = async (req, res, next) => {
   try {
     const { id } = req.params;
-
-    await Apartment.findByIdAndUpdate(id, req.body, {
+    const { reserved } = req.body;
+    const result = await Apartment.findByIdAndUpdate(id, req.body, {
       new: true,
     });
 
-    const result = await Reserve.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
+    await Reserve.updateMany({ apartmentId: id }, { reserved: reserved });
 
     if (!result) {
       throw HttpError(404, `id:${id} not found`);
