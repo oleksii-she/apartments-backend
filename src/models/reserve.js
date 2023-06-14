@@ -1,61 +1,71 @@
-const Joi = require('joi')
-const {Schema, model} = require('mongoose')
-
+const Joi = require("joi");
+const { Schema, model } = require("mongoose");
 
 const NumberRegex = /^(\+|\d{2})\d{9,15}$/;
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\"\S+\"))@\w+([\-\.]{1}\w+)*\.\w{2,}$/;
 
-const ReserveSchema = Schema({
-      name:{
-        type:String,
-              required: true,
+const ReserveSchema = Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-    phone:{
-        type:String,
-              required: true,
+    phone: {
+      type: String,
+      required: true,
     },
-  email: {
+    email: {
       type: String,
       match: emailRegex,
       required: true,
     },
-       description: {
+    description: {
       type: String,
     },
-    apartmentId:{
+    apartmentId: {
       type: Schema.Types.ObjectId,
       ref: "apartment",
       required: true,
     },
-    apartmentName:{
+    apartmentName: {
       type: Schema.Types.String,
       ref: "apartment",
       required: true,
     },
-    coverImage:{
+    reserved: {
+      type: Schema.Types.Boolean,
+      ref: "apartment",
+      required: true,
+    },
+    coverImage: {
       type: Schema.Types.String,
       ref: "apartment",
       required: true,
     },
-    read:{
-type:Boolean,
-default:false
+    read: {
+      type: Boolean,
+      default: false,
     },
-        owner: {
+    owner: {
       type: Schema.Types.ObjectId,
       ref: "user",
       required: true,
     },
-},
+  },
   {
     versionKey: false,
     timestamps: true,
-  })
+  }
+);
 
 const joiReserveSchema = Joi.object({
   name: Joi.string().min(3).max(25).required("Name is required"),
-  phone: Joi.string().min(3).max(25).pattern(NumberRegex).required("Phone is required"),
+  phone: Joi.string()
+    .min(3)
+    .max(25)
+    .pattern(NumberRegex)
+    .required("Phone is required"),
   email: Joi.string().pattern(emailRegex).required("Email is required"),
   read: Joi.boolean(),
   description: Joi.string().min(5).max(400),
@@ -64,10 +74,10 @@ const joiReserveSchema = Joi.object({
 const joiReserveReadSchema = Joi.object({
   read: Joi.boolean(),
 });
-const Reserve = model('reserve',ReserveSchema )
+const Reserve = model("reserve", ReserveSchema);
 
 module.exports = {
   Reserve,
   joiReserveSchema,
-  joiReserveReadSchema
+  joiReserveReadSchema,
 };
