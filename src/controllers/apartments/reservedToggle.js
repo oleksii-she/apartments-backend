@@ -1,12 +1,14 @@
-const { Apartment } = require("../../models");
-const { HttpError } = require("../../helpers")
-;
+const { Apartment, Reserve } = require("../../models");
+const { HttpError } = require("../../helpers");
 const reservedToggle = async (req, res, next) => {
   try {
     const { id } = req.params;
 
+    await Apartment.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
 
-    const result = await Apartment.findByIdAndUpdate(id, req.body, {
+    const result = await Reserve.findByIdAndUpdate(id, req.body, {
       new: true,
     });
 
