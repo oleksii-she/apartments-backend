@@ -38,6 +38,22 @@ const ReserveSchema = Schema(
       ref: "apartment",
       required: true,
     },
+    sum: {
+      type: Number,
+      required: true,
+    },
+    startDate: {
+      type: String,
+      required: true,
+    },
+    endDate: {
+      type: String,
+      required: true,
+    },
+    numberOfDays: {
+      type: Number,
+      required: true,
+    },
     coverImage: {
       type: Schema.Types.String,
       ref: "apartment",
@@ -68,7 +84,10 @@ const joiReserveSchema = Joi.object({
     .required("Phone is required"),
   email: Joi.string().pattern(emailRegex).required("Email is required"),
   read: Joi.boolean(),
-  description: Joi.string().min(5).max(400),
+  sum: Joi.number().required("Sum is required"),
+  startDate: Joi.string().min(5).max(80).required("Start Date is required"),
+  endDate: Joi.string().min(5).max(80).required("End Date is required"),
+  numberOfDays: Joi.number().required("Number of days is required"),
 });
 
 const joiReserveReadSchema = Joi.object({
