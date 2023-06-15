@@ -22,6 +22,7 @@ const ReserveSchema = Schema(
     },
     description: {
       type: String,
+      required: false,
     },
     apartmentId: {
       type: Schema.Types.ObjectId,
@@ -84,7 +85,7 @@ const joiReserveSchema = Joi.object({
     .required("Phone is required"),
   email: Joi.string().pattern(emailRegex).required("Email is required"),
   read: Joi.boolean(),
-
+  description: Joi.string().max(800),
   sum: Joi.number().required("Sum is required"),
   startDate: Joi.string().min(5).max(80).required("Start Date is required"),
   endDate: Joi.string().min(5).max(80).required("End Date is required"),
