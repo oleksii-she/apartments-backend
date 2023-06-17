@@ -7,7 +7,10 @@ const getById = async (req, res, next) => {
 
     const comments = await Comment.find({ apartment: id });
 
-    const result = await Apartment.findById(id).populate("ratings", "user");
+    const result = await Apartment.findById(id).populate(
+      "ratings",
+      "user userRating"
+    );
 
     if (!result) {
       throw HttpError(404, `Apartment id:${id} not found`);
