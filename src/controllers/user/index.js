@@ -5,7 +5,8 @@ const logout = require("./logout");
 const getAllUserApartments = require("./getAllUserApartments");
 const updateUser = require("./updeteUser");
 const googleLogin = require("./googleLogin");
-const getReserve = require('../reserves/getAllReserves')
+const getReserve = require("../reserves/getAllReserves");
+const updateUserRating = require("./updateUserRating");
 module.exports = {
   registration,
   login,
@@ -14,5 +15,6 @@ module.exports = {
   getAllUserApartments,
   updateUser,
   googleLogin,
-  getReserve
+  getReserve,
+  updateUserRating,
 };

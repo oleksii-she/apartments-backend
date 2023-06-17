@@ -8,6 +8,7 @@ const updateRating = async (req, res, next) => {
     const { rating } = req.body;
 
     const apartment = await Apartment.findById(id);
+
     const findUser = apartment.ratings.find(
       (el) => el.user.toString() === _id.toString()
     );

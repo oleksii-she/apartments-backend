@@ -7,6 +7,21 @@ const emailRegex =
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\"\S+\"))@\w+([\-\.]{1}\w+)*\.\w{2,}$/;
 
 const NumberRegex = /^(\+|\d{2})\d{9,15}$/;
+
+const userRatingSchema = Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
+  userRating: {
+    type: Number,
+    min: 0,
+    max: 5,
+    default: 0,
+  },
+});
+
 const userSchema = new Schema(
   {
     name: {
@@ -21,9 +36,15 @@ const userSchema = new Schema(
     },
     phone: {
       type: String,
-      default: '+380000000000',
-      
+      default: "+380000000000",
     },
+    userRating: {
+      type: Number,
+      min: 0,
+      max: 5,
+      default: 0,
+    },
+    usersRatings: [userRatingSchema],
     password: {
       type: String,
       minlength: 6,
@@ -46,6 +67,7 @@ const joiUserRegisterSchema = Joi.object({
   phone: Joi.string().min(3).max(25).pattern(NumberRegex).required(),
   email: Joi.string().pattern(emailRegex).required(),
   password: Joi.string().min(6).max(25).required(),
+  userRating: Joi.number().min(0).max(5).default(0),
 });
 
 const joiUserLoginSchema = Joi.object({
@@ -56,7 +78,6 @@ const joiUserLoginSchema = Joi.object({
 const joiGoogleLoginSchema = Joi.object({
   name: Joi.string().required("Name is required"),
   email: Joi.string().email().required("Email is required"),
-  accessToken: Joi.string(),
 });
 
 const userJoiSchemas = { joiUserRegisterSchema, joiUserLoginSchema };

@@ -27,12 +27,8 @@ router.post(
   ctrlWrapper(ctrl.add)
 );
 router.get("/:id", authentication, isValidId, ctrlWrapper(ctrl.getById));
-router.patch(
-  "/user",
-  authentication,
-  ctrlWrapper(ctrl.updateUser)
-);
+router.patch("/user", authentication, ctrlWrapper(ctrl.updateUser));
 
-
+router.patch("/:id/rate", authentication, ctrlWrapper(ctrl.updateUserRating));
 
 module.exports = router;

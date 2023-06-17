@@ -15,7 +15,7 @@ const getAll = async (req, res, next) => {
       apartments = await Apartment.find()
         .skip(skip)
         .limit(limit)
-        .populate("owner", "name email ratings")
+        .populate("owner", "name email ratings userRating")
         .sort({ createdAt: -1 });
     } else {
       totalPosts = await Apartment.countDocuments({ country: country });
