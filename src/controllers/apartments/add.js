@@ -14,7 +14,7 @@ const add = async (req, res, next) => {
   try {
     const { coverImage, images } = req.files;
 
-    const { _id: owner, name: user, phone, email } = req.user;
+    const { _id: owner, name: user, phone, email, userRating } = req.user;
 
     const coverImageResp = await cloudinary.uploader.upload(
       coverImage[0].path,
@@ -58,6 +58,7 @@ const add = async (req, res, next) => {
         user,
         phone,
         email,
+        userRating,
       },
       owner,
     });
