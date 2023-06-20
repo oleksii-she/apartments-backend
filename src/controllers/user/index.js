@@ -7,6 +7,7 @@ const updateUser = require("./updeteUser");
 const googleLogin = require("./googleLogin");
 const getReserve = require("../reserves/getAllReserves");
 const updateUserRating = require("./updateUserRating");
+const getUser = require("./getUser");
 module.exports = {
   registration,
   login,
@@ -17,4 +18,5 @@ module.exports = {
   googleLogin,
   getReserve,
   updateUserRating,
+  getUser,
 };
