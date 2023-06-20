@@ -4,7 +4,7 @@ const { HttpError } = require("../../helpers");
 const getUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { email, name, userRating, usersRatings, phone } =
+    const { email, name, userRating, usersRatings, phone, _id } =
       await User.findById(id);
 
     if (!email) {
