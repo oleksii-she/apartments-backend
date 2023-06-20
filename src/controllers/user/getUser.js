@@ -8,7 +8,7 @@ const getUser = async (req, res, next) => {
       await User.findById(id);
 
     if (!email) {
-      throw HttpError(404, `User with id:${_id} not found`);
+      throw HttpError(404, `User with id:${id} not found`);
     }
 
     res
