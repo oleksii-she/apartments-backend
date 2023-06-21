@@ -13,7 +13,7 @@ const getUser = async (req, res, next) => {
 
     res
       .status(200)
-      .json({ data: { email, name, userRating, usersRatings, phone } });
+      .json({ data: { email, name, userRating, usersRatings, phone, _id } });
   } catch (error) {
     console.error(error);
     next(error);
