@@ -50,12 +50,7 @@ router.post(
   validation(joiCommentSchema),
   ctrlWrapper(ctrl.addComment)
 );
-router.get(
-  "/:id/comments",
-  authentication,
-  isValidId,
-  ctrlWrapper(ctrl.getComments)
-);
+router.get("/:id/comments", isValidId, ctrlWrapper(ctrl.getComments));
 router.delete(
   "/:id/comments",
   authentication,
