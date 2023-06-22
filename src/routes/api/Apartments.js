@@ -9,9 +9,11 @@ const {
   upload,
 } = require("../../middleware");
 const { apartments: ctrl } = require("../../controllers/");
-const { joiApartmentSchema,joiReservedSchema } = require("../../models/apartment");
+const {
+  joiApartmentSchema,
+  joiReservedSchema,
+} = require("../../models/apartment");
 const { joiCommentSchema } = require("../../models/comment");
-
 
 router.get("/", ctrlWrapper(ctrl.getAll));
 // router.get("/", ctrlWrapper(ctrl.getAllFilterCountry));
@@ -34,7 +36,12 @@ router.put(
 
   ctrlWrapper(ctrl.updateById)
 );
-router.delete("/:id", authentication, isValidId, ctrlWrapper(ctrl.apartmentRemoveById));
+router.delete(
+  "/:id",
+  authentication,
+  isValidId,
+  ctrlWrapper(ctrl.apartmentRemoveById)
+);
 
 router.post(
   "/:id/comments",
@@ -47,7 +54,6 @@ router.get(
   "/:id/comments",
   authentication,
   isValidId,
-  validation(joiCommentSchema),
   ctrlWrapper(ctrl.getComments)
 );
 router.delete(
@@ -78,6 +84,5 @@ router.patch(
   validation(joiReservedSchema),
   ctrlWrapper(ctrl.reservedToggle)
 );
-
 
 module.exports = router;
