@@ -15,6 +15,7 @@ const authRouter = require("./src/routes/api/auth");
 const userRouter = require("./src/routes/api/users");
 const app = express();
 
+mongoose.set('strictQuery', false);
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 app.set('view engine', 'ejs');
 app.use(logger(formatsLogger));
