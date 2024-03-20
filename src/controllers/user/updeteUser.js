@@ -1,4 +1,4 @@
-const { User } = require("../../models");
+const { User,Apartment } = require("../../models");
 const { HttpError } = require("../../helpers");
 
 const updateUser = async (req, res, next) => {
@@ -11,6 +11,8 @@ const updateUser = async (req, res, next) => {
       throw HttpError(400, `Phone number ${newPhone} already exists.`);
     }
 
+
+
     const result = await User.findByIdAndUpdate(
       _id,
       { name: newName, phone: newPhone },
@@ -20,6 +22,8 @@ const updateUser = async (req, res, next) => {
     if (!result) {
       throw HttpError(404, `User with id:${_id} not found`);
     }
+
+
 
     res.status(200).json({ data: { result } });
   } catch (error) {

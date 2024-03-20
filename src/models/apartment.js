@@ -76,10 +76,10 @@ const apartmentSchema = Schema(
       ref: "user",
       required: true,
     },
-    user: {
-      type: Object,
-      required: true,
-    },
+    // user: {
+    //   type: Object,
+    //   required: false,
+    // },
   },
   {
     versionKey: false,
