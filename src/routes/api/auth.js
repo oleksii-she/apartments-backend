@@ -1,56 +1,57 @@
-const express = require("express");
+const express = require('express');
 
 const router = express.Router();
-const passport = require("passport");
-require('../../utils/authGoogle')
+const passport = require('passport');
+require('../../utils/authGoogle');
 
 const {
   ctrlWrapper,
   validation,
   isValidId,
   authentication,
-  isLoggedIn
-} = require("../../middleware");
-const { user: ctrl } = require("../../controllers");
-const { userJoiSchemas } = require("../../models/user");
-
+  isLoggedIn,
+} = require('../../middleware');
+const { user: ctrl } = require('../../controllers');
+const { userJoiSchemas } = require('../../models/user');
 
 router.post(
-  "/register",
+  '/register',
   validation(userJoiSchemas.joiUserRegisterSchema),
-  ctrlWrapper(ctrl.registration)
+  ctrlWrapper(ctrl.registration),
 );
 
 router.post(
-  "/login",
+  '/login',
   validation(userJoiSchemas.joiUserLoginSchema),
-  ctrlWrapper(ctrl.login)
+  ctrlWrapper(ctrl.login),
 );
 
 router.post(
-  "/google-auth",
+  '/google-auth',
   validation(userJoiSchemas.joiGoogleLoginSchema),
-  ctrlWrapper(ctrl.googleLogin)
+  ctrlWrapper(ctrl.googleLogin),
 );
 
-router.get("/current", authentication, ctrlWrapper(ctrl.getCurrent));
+router.get('/current', authentication, ctrlWrapper(ctrl.getCurrent));
 
-router.post("/logout", authentication, ctrlWrapper(ctrl.logout));
+router.post('/logout', authentication, ctrlWrapper(ctrl.logout));
 
 //google auth
 router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+  '/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }),
 );
 
-router.get( '/google/callback',
-  passport.authenticate( 'google', {
-    successRedirect: 'https://apartments-backend.onrender.com/api/auth/google/protected',
-    failureRedirect: '/auth/google/failure'
-  })
+router.get(
+  '/google/callback',
+  passport.authenticate('google', {
+    successRedirect:
+      'https://apartments-backend.onrender.com/api/auth/google/protected',
+    failureRedirect: '/auth/google/failure',
+  }),
 );
 
-router.get('/google/protected',isLoggedIn, ctrlWrapper(ctrl.googleLogin) );
+router.get('/google/protected', isLoggedIn, ctrlWrapper(ctrl.googleLogin));
 router.get('/google/failure', (req, res) => {
   res.send('Failed to authenticate..');
 });

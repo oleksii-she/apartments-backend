@@ -1,7 +1,7 @@
-const Joi = require("joi");
-const { Schema, model } = require("mongoose");
+const Joi = require('joi');
+const { Schema, model } = require('mongoose');
 
-const { handleMangooseError } = require("../helpers");
+const { handleMangooseError } = require('../helpers');
 
 const emailRegex =
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\"\S+\"))@\w+([\-\.]{1}\w+)*\.\w{2,}$/;
@@ -11,7 +11,7 @@ const NumberRegex = /^(\+|\d{2})\d{9,15}$/;
 const userRatingSchema = Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "user",
+    ref: 'user',
     required: true,
   },
   userRating: {
@@ -36,7 +36,7 @@ const userSchema = new Schema(
     },
     phone: {
       type: String,
-      default: "+380000000000",
+      default: '+380000000000',
     },
     userRating: {
       type: Number,
@@ -51,16 +51,16 @@ const userSchema = new Schema(
     },
     token: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   {
     versionKey: false,
     timestamps: true,
-  }
+  },
 );
 
-userSchema.post("save", handleMangooseError);
+userSchema.post('save', handleMangooseError);
 
 const joiUserRegisterSchema = Joi.object({
   name: Joi.string().min(3).max(25).required(),
@@ -76,13 +76,13 @@ const joiUserLoginSchema = Joi.object({
 });
 
 const joiGoogleLoginSchema = Joi.object({
-  name: Joi.string().required("Name is required"),
-  email: Joi.string().email().required("Email is required"),
+  name: Joi.string().required('Name is required'),
+  email: Joi.string().email().required('Email is required'),
 });
 
 const userJoiSchemas = { joiUserRegisterSchema, joiUserLoginSchema };
 
-const User = model("user", userSchema);
+const User = model('user', userSchema);
 
 module.exports = {
   User,

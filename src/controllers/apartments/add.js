@@ -1,7 +1,7 @@
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require('cloudinary').v2;
 
-const { Apartment } = require("../../models");
-const { deleteTempFile } = require("../../helpers");
+const { Apartment } = require('../../models');
+const { deleteTempFile } = require('../../helpers');
 
 const { CLOUD_NAME, CLOUD_API_KEY, CLOUD_SECRET_KEY } = process.env;
 // Configuration
@@ -14,10 +14,7 @@ const add = async (req, res, next) => {
   try {
     const { coverImage, images } = req.files;
 
-    const {
-      _id: owner,
-
-    } = req.user;
+    const { _id: owner } = req.user;
 
     const coverImageResp = await cloudinary.uploader.upload(
       coverImage[0].path,
@@ -26,11 +23,11 @@ const add = async (req, res, next) => {
           {
             width: 480,
             height: 480,
-            gravity: "face",
-            crop: "fill",
+            gravity: 'face',
+            crop: 'fill',
           },
         ],
-      }
+      },
     );
 
     await deleteTempFile(coverImage[0].path);
@@ -43,8 +40,8 @@ const add = async (req, res, next) => {
           {
             width: 480,
             height: 480,
-            gravity: "face",
-            crop: "fill",
+            gravity: 'face',
+            crop: 'fill',
           },
         ],
       });
@@ -62,7 +59,7 @@ const add = async (req, res, next) => {
     });
 
     res.status(201).json({
-      status: "success",
+      status: 'success',
       data: { result },
     });
   } catch (error) {
