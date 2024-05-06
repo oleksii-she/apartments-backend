@@ -4,7 +4,7 @@ const session = require('express-session');
 const cors = require('cors');
 const logger = require('morgan');
 const { Server } = require('socket.io');
-const { createServer } = require('node:http');
+const { createServer } = require('http');
 
 const Chat = require('./src/models/chat.js');
 require('dotenv').config();
